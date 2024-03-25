@@ -8,12 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* amruitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* amruitTests.m */; };
+		03B9C568A05E485ABEAC1ED7 /* AirbnbCereal_W_Lt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 31DD54D6D09D4DAF94533700 /* AirbnbCereal_W_Lt.otf */; };
 		0C80B921A6F3F58F76C31292 /* libPods-amruit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-amruit.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		206F07F59C1D4BD8A91C09E3 /* AirbnbCereal_W_Md.otf in Resources */ = {isa = PBXBuildFile; fileRef = E9A123C12BC243EC8D19C327 /* AirbnbCereal_W_Md.otf */; };
+		3C2CC2C0EAE647E0B5ECBA93 /* AirbnbCereal_W_Bk.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1A6746BC27AB49D48EDE97ED /* AirbnbCereal_W_Bk.otf */; };
 		7699B88040F8A987B510C191 /* libPods-amruit-amruitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-amruit-amruitTests.a */; };
+		7854E80B000A4A5690B76178 /* AirbnbCereal_W_Blk.otf in Resources */ = {isa = PBXBuildFile; fileRef = A860FC8F7ACE472180216F0E /* AirbnbCereal_W_Blk.otf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		BBF2C2639D154E18B91BCBE7 /* AirbnbCereal_W_Bd.otf in Resources */ = {isa = PBXBuildFile; fileRef = A13F306C8906494AA606A63D /* AirbnbCereal_W_Bd.otf */; };
+		E233CFB27AEB4AEF896B9E8D /* AirbnbCereal_W_XBd.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6D290913BBB467DA7108FCE /* AirbnbCereal_W_XBd.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,12 +43,18 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = amruit/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = amruit/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-amruit-amruitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-amruit-amruitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A6746BC27AB49D48EDE97ED /* AirbnbCereal_W_Bk.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AirbnbCereal_W_Bk.otf; path = ../assets/fonts/AirbnbCereal_W_Bk.otf; sourceTree = "<group>"; };
+		31DD54D6D09D4DAF94533700 /* AirbnbCereal_W_Lt.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AirbnbCereal_W_Lt.otf; path = ../assets/fonts/AirbnbCereal_W_Lt.otf; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-amruit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-amruit.debug.xcconfig"; path = "Target Support Files/Pods-amruit/Pods-amruit.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-amruit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-amruit.release.xcconfig"; path = "Target Support Files/Pods-amruit/Pods-amruit.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-amruit-amruitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-amruit-amruitTests.debug.xcconfig"; path = "Target Support Files/Pods-amruit-amruitTests/Pods-amruit-amruitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-amruit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-amruit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = amruit/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-amruit-amruitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-amruit-amruitTests.release.xcconfig"; path = "Target Support Files/Pods-amruit-amruitTests/Pods-amruit-amruitTests.release.xcconfig"; sourceTree = "<group>"; };
+		A13F306C8906494AA606A63D /* AirbnbCereal_W_Bd.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AirbnbCereal_W_Bd.otf; path = ../assets/fonts/AirbnbCereal_W_Bd.otf; sourceTree = "<group>"; };
+		A860FC8F7ACE472180216F0E /* AirbnbCereal_W_Blk.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AirbnbCereal_W_Blk.otf; path = ../assets/fonts/AirbnbCereal_W_Blk.otf; sourceTree = "<group>"; };
+		E6D290913BBB467DA7108FCE /* AirbnbCereal_W_XBd.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AirbnbCereal_W_XBd.otf; path = ../assets/fonts/AirbnbCereal_W_XBd.otf; sourceTree = "<group>"; };
+		E9A123C12BC243EC8D19C327 /* AirbnbCereal_W_Md.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AirbnbCereal_W_Md.otf; path = ../assets/fonts/AirbnbCereal_W_Md.otf; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -122,6 +134,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				9A559426E338430FBB7428FE /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -135,6 +148,20 @@
 				00E356EE1AD99517003FC87E /* amruitTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9A559426E338430FBB7428FE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A13F306C8906494AA606A63D /* AirbnbCereal_W_Bd.otf */,
+				1A6746BC27AB49D48EDE97ED /* AirbnbCereal_W_Bk.otf */,
+				A860FC8F7ACE472180216F0E /* AirbnbCereal_W_Blk.otf */,
+				31DD54D6D09D4DAF94533700 /* AirbnbCereal_W_Lt.otf */,
+				E9A123C12BC243EC8D19C327 /* AirbnbCereal_W_Md.otf */,
+				E6D290913BBB467DA7108FCE /* AirbnbCereal_W_XBd.otf */,
+			);
+			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
@@ -243,6 +270,12 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				BBF2C2639D154E18B91BCBE7 /* AirbnbCereal_W_Bd.otf in Resources */,
+				3C2CC2C0EAE647E0B5ECBA93 /* AirbnbCereal_W_Bk.otf in Resources */,
+				7854E80B000A4A5690B76178 /* AirbnbCereal_W_Blk.otf in Resources */,
+				03B9C568A05E485ABEAC1ED7 /* AirbnbCereal_W_Lt.otf in Resources */,
+				206F07F59C1D4BD8A91C09E3 /* AirbnbCereal_W_Md.otf in Resources */,
+				E233CFB27AEB4AEF896B9E8D /* AirbnbCereal_W_XBd.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,7 +577,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -572,6 +605,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-DFOLLY_NO_CONFIG",
@@ -579,7 +613,13 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				USE_HERMES = true;
 			};
 			name = Debug;
 		};
@@ -616,7 +656,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -636,6 +676,7 @@
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-DFOLLY_NO_CONFIG",
@@ -643,7 +684,13 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				USE_HERMES = true;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
