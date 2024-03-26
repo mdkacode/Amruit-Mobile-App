@@ -1,6 +1,6 @@
 
 import { ThemeProvider } from '@shopify/restyle';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import type { PropsWithChildren } from 'react';
 import {
   SafeAreaView,
@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import theme from './Themes/theme';
+import { theme, darkTheme } from './Themes/theme';
 import fontFamily from './constants/fontFamily';
 import Button from './compoents/molecules/Buttons/Button';
 
@@ -22,25 +22,35 @@ type SectionProps = PropsWithChildren<{
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
-
+  const [darkMode, setDarkMode] = useState(isDarkMode ? darkTheme : theme );
+  useEffect(()=>{
+    if(isDarkMode) {
+      setDarkMode(darkTheme);
+    }
+    else {
+      setDarkMode(theme);
+    }
+  },[isDarkMode])
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    backgroundColor: isDarkMode ? '#000' : '#fff',
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider key={'mode'+isDarkMode} theme={darkMode}>
       <SafeAreaView style={backgroundStyle}>
         <StatusBar
           barStyle={isDarkMode ? 'light-content' : 'dark-content'}
           backgroundColor={backgroundStyle.backgroundColor}
         />
         <Button
-          title={'google'}
+          title={'Login'}
           onPress={() => { }}
-          buttonColor={"lightRed"}
-          fontColor='red'
+          buttonColor={"red"}
+          fontSize={20}
+          fontColor='textPrimary'
           icon='user'
-          width={100}
+          width={200}
+          fontWeights='semibold'
         />
 
       </SafeAreaView>
@@ -48,8 +58,6 @@ function App(): React.JSX.Element {
   );
 }
 
-const styles = StyleSheet.create({
 
-});
 
 export default App;

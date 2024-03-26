@@ -30,3 +30,5 @@ export default StyleSheet.create({
     },
 
 });
+
+export type FontWeights = 'regular' | 'semibold' | 'bold' | 'light';

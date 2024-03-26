@@ -35,6 +35,8 @@ const palette = {
 const theme = createTheme({
     colors: {
         mainBackground: palette.white,
+        white: palette.white,
+        black: palette.black,
         cardPrimaryBackground: palette.white,
         cardSecondaryBackground: palette.lightGrey,
         textPrimary: palette.black,
@@ -102,6 +104,78 @@ const theme = createTheme({
     },
 });
 
+const darkTheme = createTheme({
+    colors: {
+        mainBackground: palette.black,
+        white: palette.white,
+        black: palette.black,
+        cardPrimaryBackground: palette.black,
+        cardSecondaryBackground: palette.darkGrey,
+        textPrimary: palette.white,
+        textSecondary: palette.lightGrey,
+        textTertiary: palette.lightGreen,
+        primary: palette.mediumBlue,
+        secondary: palette.secondary,
+        error: palette.lightRed,
+        success: palette.lightGreen,
+        warning: palette.warning,
+        red: palette.red,
+        green: palette.lightGreen,
+        lightGrey: palette.darkGrey,
+        mediumGrey: palette.grey,
+        mediumGreen: palette.mediumGreen,
+        mediumRed: palette.mediumRed,
+        lightRed: palette.red,
+        lightGreen: palette.green,
+        lightBlue: palette.normalBlue,
+        normalBlue: palette.lightBlue,
+        
+    },
+    spacing: {
+        s: 8,
+        m: 16,
+        l: 24,
+        xl: 40,
+    },
+    breakpoints: {
+        phone: 0,
+        tablet: 768,
+    },
+    textVariants: {
+        header: {
+            fontSize: 34,
+            fontFamily: 'SFProDisplay-Bold',
+            color: 'textPrimary',
+        },
+        title: {
+            fontSize: 28,
+            fontFamily: 'SFProDisplay-Bold',
+            color: 'textPrimary',
+        },
+        body: {
+            fontSize: 16,
+            fontFamily: 'SFProDisplay-Regular',
+            color: 'textPrimary',
+        },
+        button: {
+            fontSize: 15,
+            fontFamily: 'SFProDisplay-Semibold',
+            color: 'textPrimary',
+        },
+    },
+    borderRadius: {
+        s: 4,
+        m: 10,
+        l: 25,
+        xl: 75,
+    },
+    borderWidths: {
+        none: 0,
+        s: 1,
+        m: 2,
+    },
+});
+
 
 export type Theme = typeof theme;
 export type Colors = typeof theme.colors;
@@ -109,4 +183,5 @@ export type Spacing = typeof theme.spacing;
 export type TextVariants = typeof theme.textVariants;
 export type BorderRadius = typeof theme.borderRadius;
 export type BorderWidths = typeof theme.borderRadius;
-export default theme;
+
+export  {theme,darkTheme};
