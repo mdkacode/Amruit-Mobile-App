@@ -7,7 +7,8 @@ const palette = {
     black: '#000000',
     grey: '#9B9B9B',
     darkGrey: '#4A4A4A',
-
+    almostBlack: '#31363F',
+    almostWhite:'#FBF9F1',
     secondary: '#0C0D34',
     // BLUE COLORS START
     normalBlue: '#007AFF',
@@ -37,7 +38,7 @@ const theme = createTheme({
         mainBackground: palette.white,
         white: palette.white,
         black: palette.black,
-        cardPrimaryBackground: palette.white,
+        cardPrimaryBackground: palette.almostWhite,
         cardSecondaryBackground: palette.lightGrey,
         textPrimary: palette.black,
         textSecondary: palette.grey,
@@ -109,7 +110,7 @@ const darkTheme = createTheme({
         mainBackground: palette.black,
         white: palette.white,
         black: palette.black,
-        cardPrimaryBackground: palette.black,
+        cardPrimaryBackground: palette.almostBlack,
         cardSecondaryBackground: palette.darkGrey,
         textPrimary: palette.white,
         textSecondary: palette.lightGrey,

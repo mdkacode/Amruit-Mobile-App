@@ -55,9 +55,6 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
     const { title, onPress, buttonColor, icon, disabled = false, width, fontColor = 'textPrimary', fontSize,fontWeights='regular' } = props;
     const iconImage = icon ? useDynamicImage(icon) : null;
-
-    const theme = useTheme<Theme>();
-
     /**
      * Fallback UI to be rendered when an error occurs inside the Button component.
      * 

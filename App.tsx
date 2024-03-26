@@ -15,6 +15,7 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { theme, darkTheme } from './Themes/theme';
 import fontFamily from './constants/fontFamily';
 import Button from './compoents/molecules/Buttons/Button';
+import TextBox from './compoents/molecules/Textbox/TextBox';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -49,9 +50,18 @@ function App(): React.JSX.Element {
           fontSize={20}
           fontColor='textPrimary'
           icon='user'
-          width={200}
+          width={'auto'}
           fontWeights='semibold'
         />
+
+        <TextBox 
+        title='Apple'
+        onPress={console.log}
+        value='Apple'
+        icon='card'
+         onChange={console.log}
+       
+          />
 
       </SafeAreaView>
     </ThemeProvider>
