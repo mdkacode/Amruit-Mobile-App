@@ -14,8 +14,12 @@ import {
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { theme, darkTheme } from './Themes/theme';
 import fontFamily from './constants/fontFamily';
-import Button from './compoents/molecules/Buttons/Button';
-import TextBox from './compoents/molecules/Textbox/TextBox';
+import Button from './compoents/Atoms/Buttons/Button';
+import TextBox from './compoents/Atoms/Textbox/TextBox';
+import CardComponent from './compoents/molecules/Cards/CardBasic';
+import MyStack from './navigation/NavigationStack';
+import { NavigationContainer } from '@react-navigation/native';
+import LoginScreen from './screens/Login/Login.index';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -38,32 +42,9 @@ function App(): React.JSX.Element {
 
   return (
     <ThemeProvider key={'mode'+isDarkMode} theme={darkMode}>
-      <SafeAreaView style={backgroundStyle}>
-        <StatusBar
-          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-          backgroundColor={backgroundStyle.backgroundColor}
-        />
-        <Button
-          title={'Login'}
-          onPress={() => { }}
-          buttonColor={"red"}
-          fontSize={20}
-          fontColor='textPrimary'
-          icon='user'
-          width={'auto'}
-          fontWeights='semibold'
-        />
-
-        <TextBox 
-        title='Apple'
-        onPress={console.log}
-        value='Apple'
-        icon='card'
-         onChange={console.log}
-       
-          />
-
-      </SafeAreaView>
+        <NavigationContainer>
+          <MyStack />
+        </NavigationContainer>
     </ThemeProvider>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
-import Button from '../compoents/molecules/Buttons/Button'; // Assuming Button component is exported from Button.tsx
+import Button from '../compoents/Atoms/Buttons/Button'; // Assuming Button component is exported from Button.tsx
 
 describe('Button Component', () => {
   it('renders correctly with title', () => {

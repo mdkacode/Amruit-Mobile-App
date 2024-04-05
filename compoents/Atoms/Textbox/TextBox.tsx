@@ -2,15 +2,31 @@ import React, { useMemo, useState } from 'react';
 import { TextInput, View, Text, StyleSheet, Image } from 'react-native';
 import useColorFromPallate from '../../../hooks/useColorFromPallate';
 import IGenericProps from '../../../interfaces/genericProps';
-import useDynamicImage from '../../../hooks/useDynamicImage';
+import  { useDynamicImage,Iimages } from '../../../hooks/useDynamicImage';
 
 interface TextBoxProps extends IGenericProps {
     placeholder?: string;
     value?: string;
+    icon?: string;
+    editable?: boolean;
+    maxLength?: number;
+    autoComplete?: 'tel' | "address-line1" | "address-line2" | "email" | "one-time-code" | 'off';
+    autoFocus?: boolean;
+    keyboardType?: 'default' | 'number-pad' | 'decimal-pad' | 'numeric' | 'email-address' | 'phone-pad';
 };
 
 const TextBox: React.FC<TextBoxProps> = (props) => {
-    const { value, onChange, onFocus, onBlur, placeholder = '', width = 'auto', key = 'text-box', icon, fontColor = 'black' } = props;
+    const { value = '',
+        onChange = () => 'I am function',
+        onFocus = () => 'I am function',
+        onBlur, placeholder = '', width = 'auto',
+        key = 'text-box', icon,
+        autoFocus = false,
+        maxLength = 50,
+        editable = true,
+        autoComplete = 'off',
+        keyboardType = 'default',
+        fontColor = 'black' } = props;
     const [isError, setIsError] = useState(false);
     const iconImage = icon ? useDynamicImage(icon) : null;
     const handleInputChange = (text: string) => {
@@ -53,7 +69,7 @@ const TextBox: React.FC<TextBoxProps> = (props) => {
                         key={iconImage}
                         style={{
                             marginRight: 10,
-                          
+
                             height: 20,
                             width: 20,
                             tintColor: "red",
@@ -67,6 +83,7 @@ const TextBox: React.FC<TextBoxProps> = (props) => {
             <View style={{ flex: 10 }}>
                 <TextInput
                     testID='text-box'
+
                     key={key}
                     style={[styles.textBoxStyle, {
                         height: 40,
@@ -74,6 +91,12 @@ const TextBox: React.FC<TextBoxProps> = (props) => {
                         color: useColorFromPallate('textPrimary'),
                         backgroundColor: useColorFromPallate('cardPrimaryBackground'),
                     }]}
+                    keyboardAppearance='default'
+                    keyboardType={keyboardType}
+                    autoComplete={autoComplete}
+                    editable={editable}
+                    maxLength={50}
+                    autoFocus={autoFocus}
                     defaultValue={value}
                     onChangeText={handleInputChange}
                     placeholder={placeholder}

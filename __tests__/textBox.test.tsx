@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { render } from '@testing-library/react-native';
-import TextBox from '../compoents/molecules/Textbox/TextBox'; // Assuming TextBox component is exported from TextBox.tsx
+import TextBox from '../compoents/Atoms/Textbox/TextBox'; // Assuming TextBox component is exported from TextBox.tsx
 
 //...
 
