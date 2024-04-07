@@ -8,7 +8,7 @@ const palette = {
     grey: '#9B9B9B',
     darkGrey: '#4A4A4A',
     almostBlack: '#31363F',
-    almostWhite:'#FBF9F1',
+    almostWhite:'#FBFBFB',
     secondary: '#0C0D34',
     // BLUE COLORS START
     normalBlue: '#007AFF',

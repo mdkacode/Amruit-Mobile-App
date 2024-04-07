@@ -3,6 +3,7 @@ import { ThemeProvider } from '@shopify/restyle';
 import React, { useEffect, useState } from 'react';
 import type { PropsWithChildren } from 'react';
 import {
+  KeyboardAvoidingView,
   SafeAreaView,
   StatusBar,
   StyleSheet,
@@ -27,24 +28,26 @@ type SectionProps = PropsWithChildren<{
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
-  const [darkMode, setDarkMode] = useState(isDarkMode ? darkTheme : theme );
-  useEffect(()=>{
-    if(isDarkMode) {
+  const [darkMode, setDarkMode] = useState(isDarkMode ? darkTheme : theme);
+  useEffect(() => {
+    if (isDarkMode) {
       setDarkMode(darkTheme);
     }
     else {
       setDarkMode(theme);
     }
-  },[isDarkMode])
+  }, [isDarkMode])
   const backgroundStyle = {
     backgroundColor: isDarkMode ? '#000' : '#fff',
   };
 
   return (
-    <ThemeProvider key={'mode'+isDarkMode} theme={darkMode}>
-        <NavigationContainer>
+    <ThemeProvider key={'mode' + isDarkMode}  theme={darkMode}>
+      <NavigationContainer>
+        <KeyboardAvoidingView style={{ flex: 1 }}>
           <MyStack />
-        </NavigationContainer>
+        </KeyboardAvoidingView>
+      </NavigationContainer>
     </ThemeProvider>
   );
 }

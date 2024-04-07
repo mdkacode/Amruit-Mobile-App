@@ -2,10 +2,11 @@ import React from 'react';
 import { useTheme } from '@shopify/restyle';
 import { TouchableOpacity, Text, StyleSheet, Image, View } from 'react-native';
 import { Colors, Theme } from '../../../Themes/theme';
-import useDynamicImage from '../../../hooks/useDynamicImage';
+
 import useColorFromPallate from '../../../hooks/useColorFromPallate';
 import ErrorBoundary from '../../../classes/ErrorBoundary';
 import  fontStyleSheet, { FontWeights } from '../../../constants/fontFamily';
+import { useDynamicImage } from '../../../hooks/useDynamicImage';
 /**
  * Button component that can be customized with various props.
  */

@@ -11,6 +11,15 @@ import wallet from '../assets/icons/wallet.png';
 import smartphone from '../assets/icons/smartphone.png';
 import shoppingCartIcon from '../assets/icons/shoppingCart.png';
 import lock from '../assets/icons/lock.png';
+import count from '../assets/icons/count.png';
+import rupee from '../assets/icons/rupee.png';
+import percentage from '../assets/icons/percentage.png';
+import call from '../assets/icons/call.png';
+import calendar from '../assets/icons/calendar.png';
+import barcode from '../assets/icons/barcode.png';
+
+
+
 
 // Define a type for the images object
 export type Images = {
@@ -18,7 +27,7 @@ export type Images = {
 };
 
 // Create a mapping of image names to their corresponding images
-  const Iimages: Images = {
+const Iimages: Images = {
     age: ageIcon,
     sex: sexIcon,
     comment: commentIcon,
@@ -29,6 +38,12 @@ export type Images = {
     wallet: wallet,
     user: user,
     lock: lock,
+    count: count,
+    call: call,
+    rupee: rupee,
+    calendar: calendar,
+    percentage: percentage,
+    barcode: barcode,
     wrench: require('../assets/icons/wrench.png'),
 };
 
@@ -42,4 +57,4 @@ const useDynamicImage = (imageName: string) => {
 
 };
 
-export  {useDynamicImage,Iimages};
+export { useDynamicImage, Iimages };
