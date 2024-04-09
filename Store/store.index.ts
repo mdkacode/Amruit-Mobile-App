@@ -3,9 +3,7 @@ import { useDispatch } from 'react-redux';
 import rootReducer from './Reducers';
 
 const store = configureStore({
-    reducer: {
-        // reducers
-    }
+    reducer: rootReducer
 });
 
 

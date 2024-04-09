@@ -36,18 +36,26 @@ const AppStyles = StyleSheet.create({
         shadowRadius: 4,
         elevation: 4, // For Android
     },
-    cardContent:{
-        display:"flex",
+    cardContent: {
+        display: "flex",
         fontFamily: fontFamily.regular.fontFamily,
-        flexDirection:"row",
-        justifyContent:"space-between",
-        alignItems:"center",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
     },
-    button:{
+    button: {
         backgroundColor: '#000',
-        padding:8,
-        borderRadius:8,
+        padding: 8,
+        borderRadius: 8,
         fontFamily: fontFamily.regular.fontFamily,
+    },
+    bottomNavigation: {
+        backgroundColor: '#fff',
+        paddingTop: 10,
+        borderRadius: 10,
+        bottom: 0,
+        borderTopEndRadius: 20,
+        borderTopStartRadius: 20,
     }
 
 });
