@@ -115,7 +115,7 @@ const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
 
 const styles = StyleSheet.create({
     button: {
-        padding: 10,
+        padding: 4,
         elevation: 2,
         borderRadius: 5,
         alignItems: 'center',

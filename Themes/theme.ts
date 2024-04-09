@@ -27,9 +27,12 @@ const palette = {
     mediumGreen: '#9CF5D8',
     lightGreen: '#E7FBF3',
     // GREEN COLORS END
-
-
+    blueForLight: '#1C1678',
+    blueForDark: '#8576FF',
+    greenLight:"#4E9F3D",
+    greenDark:"#1E5128",
     warning: '#FFAA44',
+
 };
 
 
@@ -49,15 +52,16 @@ const theme = createTheme({
         success: palette.green,
         warning: palette.warning,
         red: palette.red,
-        green: palette.green,
+        green: palette.lightGreen,
         lightGrey: palette.lightGrey,
         mediumGrey: palette.grey,
         mediumGreen: palette.mediumGreen,
         mediumRed: palette.mediumRed,
         lightRed: palette.lightRed,
-        lightGreen: palette.lightGreen,
+        lightGreen: palette.greenLight,
         lightBlue: palette.lightBlue,
         normalBlue: palette.normalBlue,
+       
         
     },
     spacing: {
@@ -121,7 +125,7 @@ const darkTheme = createTheme({
         success: palette.lightGreen,
         warning: palette.warning,
         red: palette.red,
-        green: palette.lightGreen,
+        green: palette.greenDark,
         lightGrey: palette.darkGrey,
         mediumGrey: palette.grey,
         mediumGreen: palette.mediumGreen,

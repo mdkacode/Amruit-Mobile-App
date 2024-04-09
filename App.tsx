@@ -4,23 +4,14 @@ import React, { useEffect, useState } from 'react';
 import type { PropsWithChildren } from 'react';
 import {
   KeyboardAvoidingView,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  Text,
   useColorScheme,
-  View,
 } from 'react-native';
 
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { theme, darkTheme } from './Themes/theme';
-import fontFamily from './constants/fontFamily';
-import Button from './compoents/Atoms/Buttons/Button';
-import TextBox from './compoents/Atoms/Textbox/TextBox';
-import CardComponent from './compoents/molecules/Cards/CardBasic';
 import MyStack from './navigation/NavigationStack';
 import { NavigationContainer } from '@react-navigation/native';
-import LoginScreen from './screens/Login/Login.index';
+import { Provider } from 'react-redux';
+import store from './Store/store.index';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -42,10 +33,12 @@ function App(): React.JSX.Element {
   };
 
   return (
-    <ThemeProvider key={'mode' + isDarkMode}  theme={darkMode}>
-      <NavigationContainer>
-        <KeyboardAvoidingView style={{ flex: 1 }}>
-          <MyStack />
+    <ThemeProvider key={'mode' + isDarkMode} theme={darkMode}>
+      <NavigationContainer key={'appNavigation'}>
+        <KeyboardAvoidingView key={'appKeyboardAvoidView'} style={{ flex: 1 }}>
+          <Provider key={'AppStoreProvider'} store={store}>
+            <MyStack key={'appStack'} />
+          </Provider>
         </KeyboardAvoidingView>
       </NavigationContainer>
     </ThemeProvider>

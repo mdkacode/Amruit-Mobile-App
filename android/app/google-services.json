@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "900627593876",
+    "project_id": "car-services-f7f7a",
+    "storage_bucket": "car-services-f7f7a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:900627593876:android:f2699acb63fff34528d281",
+        "android_client_info": {
+          "package_name": "org.amruit.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAN7VPlE_GG7o7JkvCM9_dZiZoZSgkrJZM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
-import { View, StyleSheet, SafeAreaView, Keyboard } from 'react-native';
+import React from 'react';
+import { StyleSheet, SafeAreaView, Keyboard } from 'react-native';
 import TextBox from '../../compoents/Atoms/Textbox/TextBox';
 import { ScrollView } from 'react-native-gesture-handler';
 import BarcodeScannerWithInput from '../../compoents/molecules/BarcodeScannerWithInput/BarcodeScannerWithInput';
 import Dropdown from '../../compoents/Atoms/Dropdown/dropdown';
-import { useCameraPermission } from 'react-native-vision-camera';
 import DatePicker from '../../compoents/Atoms/DatePicker/datePicker';
 import Button from '../../compoents/Atoms/Buttons/Button';
 
@@ -113,8 +112,7 @@ const HomeScreen: React.FC<{ children: React.ReactNode }> = () => {
                 { label: 'GMC Sierra HD', value: 'GMC Sierra HD', image: 'https://images.hgmsites.net/hug/gmc-sierra-2500hd_100783134_h.jpg', subLabel: 'Heavy-duty pickup truck' },
                 { label: 'Ford Super Duty', value: 'Ford Super Duty', image: 'https://images.hgmsites.net/hug/ford-super-duty-f-250_100783288_h.jpg', subLabel: 'Heavy-duty pickup truck' },
                 { label: 'Ram 3500', value: 'Ram 3500', image: 'https://images.hgmsites.net/hug/ram-3500_100783311_h.jpg', subLabel: 'Heavy-duty pickup truck' }
-            ]
-            } onSelect={(e) => { onselect(e) }}
+            ]} onSelect={(e) => { onselect(e) }}
                 placeHolder={selectedItem}
             />
             <TextBox placeholder='Quantity' keyboardType='numeric' maxLength={5000} icon='count' />

@@ -20,7 +20,7 @@ interface dropdownOptions {
     key?: string | number;
 }
 
-const App: React.FC<SheetContentProps> = (props) => {
+const Dropdown: React.FC<SheetContentProps> = (props) => {
     const { options = [], onSelect = (value) => console.log(value, " Not handled in props"), placeHolder = {
         label: '',
         value: '',
@@ -150,4 +150,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default App;
+export default Dropdown;
