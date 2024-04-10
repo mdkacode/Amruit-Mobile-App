@@ -29,9 +29,9 @@ const ImageDisplay: React.FC<ImageDisplayProps> = ({
   };
 
   return (
-    <View style={styles.container}>
-      {loading && <ActivityIndicator size="small" color="#0000ff" />}
-      {error ? (
+    source ? <View style={styles.container}>
+      {/* {loading && <ActivityIndicator size="small" color="#0000ff" />} */}
+      {error  ? (
         <></>
       ) : (
         <Image
@@ -46,7 +46,7 @@ const ImageDisplay: React.FC<ImageDisplayProps> = ({
           onError={handleError}
         />
       )}
-    </View>
+    </View> :<></>
   );
 };
 

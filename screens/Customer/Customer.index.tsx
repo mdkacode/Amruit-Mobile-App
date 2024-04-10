@@ -5,11 +5,24 @@ import ImageDisplay from '../../compoents/Atoms/ImageDisplay/imageDisplay';
 import useColorFromPallate from '../../hooks/useColorFromPallate';
 import fontFamily from '../../constants/fontFamily';
 import Button from '../../compoents/Atoms/Buttons/Button';
+import { logoutUserGlobalFunction } from '../../utils/authUtils';
+import {  useAppDispatch, useAppSelector } from '../../Store/store.index';
+import { setUser } from '../../Store/Slices/user.slice';
 
 
 const Customer = ({ navigation, route }) => {
 
 
+    const selector = useAppSelector(state=> state.userSlice.user);
+    const dispatch = useAppDispatch();
+    React.useLayoutEffect(() => {
+        dispatch(setUser({ user: { ...selector }, isLoggedIn: true }));
+        navigation.setOptions({
+          headerLeft: null,
+        });
+      }, [navigation]);
+
+      
     const HeaderComponent = () => {
 
         return <View style={{
@@ -29,7 +42,7 @@ const Customer = ({ navigation, route }) => {
                 fontColor='white'
                 buttonColor='black'
                 fontSize={14}
-                onPress={() => navigation.push('Add Customer')} />
+                onPress={() => navigation.push('AddCustomer')} />
         </View>
     }
 

@@ -5,6 +5,7 @@ import Button from '../../compoents/Atoms/Buttons/Button';
 import TextBox from '../../compoents/Atoms/Textbox/TextBox';
 import Dropdown from '../../compoents/Atoms/Dropdown/dropdown';
 import DatePicker from '../../compoents/Atoms/DatePicker/datePicker';
+import { useGetProductListQuery, useGetSearchCarQuery } from '../../Store/Api/searchApi';
 
 
 const AddCustomer = ({ navigation, route }) => {
@@ -20,8 +21,10 @@ const AddCustomer = ({ navigation, route }) => {
         key: 'Select Service',
         image: 'https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png'
     });
-   
 
+    const { data: searchCarData, error: searchCarError, isLoading: searchCarIsLoading } = useGetSearchCarQuery('mar')
+    const { data: productListData, error: productListError, isLoading: productListIsLoading } = useGetProductListQuery('9839284651');
+    
     // useEffect(() => {
     //     navigation.setOptions({
     //         headerTitle: (e: any) => {
@@ -37,24 +40,10 @@ const AddCustomer = ({ navigation, route }) => {
                 <TextBox label="Phone" maxLength={10}
                     keyboardType='number-pad'
                     placeholder="Phone Number" />
-                <Dropdown options={[
-                    { label: 'Toyota Camry', value: 'Toyota Camry', image: 'https://stimg.cardekho.com/images/carexteriorimages/930x620/Mercedes-Benz/GLA-2024/9731/1679039244149/front-left-side-47.jpg?tr=w-420', subLabel: 'Luxury sedan' },
-                    { label: 'Honda Accord', value: 'Honda Accord', image: 'https://stimg.cardekho.com/images/carexteriorimages/930x620/Mercedes-Benz/GLA-2024/9731/1679039244149/front-left-side-47.jpg?tr=w-420', subLabel: 'Reliable sedan' },
-                    { label: 'Nissan Altima', value: 'Nissan Altima', image: 'https://images.hgmsites.net/hug/nissan-altima_100686444_h.jpg', subLabel: 'Efficient sedan' },
-                    { label: 'Ford F-150', value: 'Ford F-150', image: 'https://images.hgmsites.net/hug/ford-f-150_100680330_h.jpg', subLabel: 'Powerful pickup truck' },
-                    { label: 'Chevrolet Silverado', value: 'Chevrolet Silverado', image: 'https://images.hgmsites.net/hug/chevrolet-silverado-1500_100688885_h.jpg', subLabel: 'Durable pickup truck' },
-
-                ]} placeHolder={selectedItem} />
+                <Dropdown options={searchCarData}  onSelect={(e) => setSelectedItem(e)} placeHolder={selectedItem} />
                 <DatePicker value={new Date()} mode='date'
                     onChange={(e) => console.log(e)} label="Delivery Date" />
-                <Dropdown options={[
-                    { label: 'Toyota Camry', value: 'Toyota Camry', image: 'https://stimg.cardekho.com/images/carexteriorimages/930x620/Mercedes-Benz/GLA-2024/9731/1679039244149/front-left-side-47.jpg?tr=w-420', subLabel: 'Luxury sedan' },
-                    { label: 'Honda Accord', value: 'Honda Accord', image: 'https://stimg.cardekho.com/images/carexteriorimages/930x620/Mercedes-Benz/GLA-2024/9731/1679039244149/front-left-side-47.jpg?tr=w-420', subLabel: 'Reliable sedan' },
-                    { label: 'Nissan Altima', value: 'Nissan Altima', image: 'https://images.hgmsites.net/hug/nissan-altima_100686444_h.jpg', subLabel: 'Efficient sedan' },
-                    { label: 'Ford F-150', value: 'Ford F-150', image: 'https://images.hgmsites.net/hug/ford-f-150_100680330_h.jpg', subLabel: 'Powerful pickup truck' },
-                    { label: 'Chevrolet Silverado', value: 'Chevrolet Silverado', image: 'https://images.hgmsites.net/hug/chevrolet-silverado-1500_100688885_h.jpg', subLabel: 'Durable pickup truck' },
-
-                ]} placeHolder={selectService} />
+                <Dropdown options={productListData} placeHolder={selectService} />
 
                 <Button title="Save" onPress={() => console.log('Save')} />
             </View>

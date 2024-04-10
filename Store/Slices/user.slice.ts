@@ -1,19 +1,22 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { UserAutApiResponseType } from '../Api/userAuth';
 
 interface UserState {
-    user: {
-        name: string;
-        otp: string;
-        userId?: string;
-        userType?: string;
-        token?: string;
-    };
+    isLoggedIn: boolean;
+    user: UserAutApiResponseType;
 }
 
 const initialState: UserState = {
+    isLoggedIn: false,
     user: {
-        name: '',
-        otp: '',
+        userName: '',
+        userCode: '',
+        phone: '',
+        profilePic: '',
+        createdAt: '',
+        updatedAt: '',
+        id: 0,
+        type: ''
     },
 } as UserState;
 
@@ -24,15 +27,16 @@ const userSlice = createSlice({
         setUser: (state, action: PayloadAction<UserState>) => {
             state.user = action.payload.user;
         },
-        setToken: (state, action: PayloadAction<string>) => {
-            state.user.token = action.payload;
-        },
-        clearToken: (state) => {
-            state.user.token = '';
+        setUserType: (state, action: PayloadAction<string>) => {
+            state.user.type = action.payload;
         },
         clearUser: (state) => {
             state.user = initialState.user;
+            state.isLoggedIn = false;
         },
+        setUserLoggedIn: (state, action: PayloadAction<boolean>) => {
+            state.isLoggedIn = action.payload;
+        }
     },
 });
 

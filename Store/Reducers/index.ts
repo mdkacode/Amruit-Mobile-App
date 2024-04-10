@@ -1,10 +1,19 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import userSlice from '../Slices/user.slice';
 import currentScreen from '../Slices/currentScreen.slice';
+import loadingSlice from '../Slices/loading.slice';
+import alertSlice from '../Slices/alertSlice';
 
+import { userAuthApi } from '../Api/userAuth';
+import { carSearchApi } from '../Api/searchApi';
 const rootReducer = combineReducers({
     userSlice: userSlice,
-    currentScreen: currentScreen
+    currentScreen: currentScreen,
+    loading: loadingSlice,
+    alert: alertSlice,
+    //API
+    [userAuthApi.reducerPath]: userAuthApi.reducer,
+    [carSearchApi.reducerPath]: carSearchApi.reducer
 });
 
 export default rootReducer;

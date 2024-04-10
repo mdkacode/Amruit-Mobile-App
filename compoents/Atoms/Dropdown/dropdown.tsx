@@ -48,7 +48,7 @@ const Dropdown: React.FC<SheetContentProps> = (props) => {
 
     const filterOptions = (searchText: string) => {
         const filteredOptions = options.filter((option) => {
-            return option.value.toLowerCase().includes(searchText.toLowerCase());
+            return option.label.toLowerCase().includes(searchText.toLowerCase());
         });
         return filteredOptions;
     }
@@ -85,12 +85,13 @@ const Dropdown: React.FC<SheetContentProps> = (props) => {
                     <FlashList
                         data={filterOptions(searchText)}
                         keyExtractor={(item) => item.value}
+                        bouncesZoom={true}
                         estimatedItemSize={filterOptions(searchText).length > 0 ? filterOptions(searchText).length : 0}
                         renderItem={({ item }) => (
                             <TouchableOpacity style={styles.listItem} onPress={() => { toggleSheet(); onSelect(item); }}>
                                 <ImageDisplay rounded source={item.image} />
                                 <View>
-                                    <Text style={styles.singleItem}>{item.value}</Text>
+                                    <Text style={styles.singleItem}>{item.label}</Text>
                                     <Text style={styles.singleSubItem}>{item.subLabel}</Text>
                                 </View>
                             </TouchableOpacity>
