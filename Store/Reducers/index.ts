@@ -6,6 +6,7 @@ import alertSlice from '../Slices/alertSlice';
 
 import { userAuthApi } from '../Api/userAuth';
 import { carSearchApi } from '../Api/searchApi';
+import { customerApi } from '../Api/customerApi';
 const rootReducer = combineReducers({
     userSlice: userSlice,
     currentScreen: currentScreen,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
     alert: alertSlice,
     //API
     [userAuthApi.reducerPath]: userAuthApi.reducer,
-    [carSearchApi.reducerPath]: carSearchApi.reducer
+    [carSearchApi.reducerPath]: carSearchApi.reducer,
+    [customerApi.reducerPath]: customerApi.reducer,
 });
 
 export default rootReducer;

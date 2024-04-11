@@ -7,7 +7,7 @@ import ImageDisplay from '../ImageDisplay/imageDisplay';
 
 interface DatePickerProps {
     mode: 'date' | 'time' | 'datetime';
-    onChange: (event: Event, selectedDate?: Date) => void;
+    onChange: ( selectedDate?: Date) => void;
     value: Date;
     minimumDate?: Date;
     key?: string;
@@ -45,7 +45,7 @@ const DatePicker: React.FC<DatePickerProps> = (props) => {
                  
                 }}
                 display="compact"
-                onChange={(event: any, selectedDate?: Date) => onChange(event.nativeEvent, selectedDate)}
+                onChange={(event: any, selectedDate?: Date) => onChange(selectedDate)}
             />
              <Text key={'dateTimeComponentText' + key} style={{
                 fontFamily: fontFamily.regular.fontFamily,

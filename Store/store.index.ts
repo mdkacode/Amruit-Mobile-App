@@ -3,6 +3,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import rootReducer from './Reducers';
 import { userAuthApi } from './Api/userAuth';
 import { carSearchApi } from './Api/searchApi';
+import { customerApi } from './Api/customerApi';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const persistConfig = {
@@ -17,6 +18,7 @@ const store = configureStore({
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(
         carSearchApi.middleware,
         userAuthApi.middleware,
+        customerApi.middleware
     ),
 });
 
