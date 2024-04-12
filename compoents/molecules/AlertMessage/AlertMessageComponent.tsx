@@ -17,7 +17,6 @@ const AlertMessageComponent: React.FC<AlertMessageProps> = (props) => {
     const opacity = useSharedValue(1);
 
     useEffect(() => {
-        console.log('comibng');
         height.value = 0;
         height.value = withSpring(height.value + 1);
         setTimeout(() => {
@@ -28,10 +27,10 @@ const AlertMessageComponent: React.FC<AlertMessageProps> = (props) => {
 
     // Cleanup: Reset opacity to 1 after animation completes
     setTimeout(() => {
-        console.log('AKAKAKKA',message)
+       
         opacity.value = withTiming(0);
         dispatch(hideAlert());  
-      console.log('AKAKAKKA')
+     
     }, 4000);
 
     }, [JSON.stringify(message)]);

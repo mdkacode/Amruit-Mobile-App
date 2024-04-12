@@ -42,8 +42,7 @@ const BarcodeScannerWithInput = React.memo((props: IBarcodeScannerWithInputProps
   const checkCameraPermission = async () => {
     // You may need to handle camera permissions using @react-native-permissions package
     // For simplicity, we assume camera permissions are granted
-    console.log(
-      'Checking Camera Permission', hasPermission)
+   
     if (!hasPermission) requestPermission();
 
   };
@@ -85,6 +84,7 @@ const BarcodeScannerWithInput = React.memo((props: IBarcodeScannerWithInputProps
               icon='barcode'
               clickLabel
               label='Scan'
+              onChange={(e) => onScanValue(e)}
               onPressLabel={() => activateScaner()}
             />
 

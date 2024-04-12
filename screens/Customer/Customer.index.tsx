@@ -64,7 +64,7 @@ const Customer = ({ navigation, route }) => {
                 navigation.setOptions({
                     headerTitle: (e: any) => {
                         return <HeaderComponent />
-                    }
+                    },
                 });
                 refetch();
             }
@@ -106,11 +106,11 @@ const Customer = ({ navigation, route }) => {
         <ScrollView key="customerScrollView">
             {data && data.length == 0 && <View key="customerView" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: Dimensions.get('window').height - 100 }}>
                 <Text key="noCustumerText" style={[AppStyles.textSemibold, { fontSize: 16 }]}>No Customers Found</Text>
-                <Button key="logoutBtn" title="Logout" fontColor='white' buttonColor='black' fontSize={14} onPress={() => logoutUserGlobalFunction()} />
+                <Button key="logoutBtn" title="+ Add Product" fontColor='white' buttonColor='black' fontSize={14} onPress={() => navigation.push('AddCustomer')} />
             </View>}
             {data?.length > 0 && data?.map((e, index) => {
                 const { customerNumber, car, serviceDate, serviceName, estimatedCost, isCompleted, productUsed, garageNumber, serviceType,totalPrice,createdAt } = e.order;
-                return <TouchableOpacity key={`${index}-touchableOpacity`} onPress={() => navigation.push('AddCustomer',e.order)} style={AppStyles.cardStyle}  >
+                return <TouchableOpacity key={`${index}-touchableOpacity`} onPress={() => navigation.push('AddCustomer',e)} style={AppStyles.cardStyle}  >
                     {markStatus(index, isCompleted)}
                     <View key={`${index}-carDetails`} style={AppStyles.cardContent}>
 
@@ -119,10 +119,10 @@ const Customer = ({ navigation, route }) => {
 
                             <View key={`${index}-carDetail-view`} style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                                 <Text key={`${index}-${serviceName || ''}-carOwnerName-view`} style={AppStyles.textBold}>{serviceName}</Text>
-                                <Text key={`${index}carName-view`} style={AppStyles.textLight}>{car} | {serviceType}</Text>
+                                <Text key={`${index}carName-view`} style={AppStyles.textLight}>{car?.label || ''} | {serviceType}</Text>
                                 <Text key={`${index}-PickupCarTime`} style={AppStyles.textLight}>Started - {moment(createdAt).format("DD-MM-YY")}</Text>
                                 <Text key={`${index}-PickupCarTimeDeliver`} style={AppStyles.textRegular}>Deliver-   {moment(serviceDate).format("DD-MM-YY")}</Text>
-                                <Text key={`${index}-PickupAmount`} style={AppStyles.textSemibold}>Amount: {rupeeSym}{e.totalPrice}</Text>
+                                <Text key={`${index}-PickupAmount`} style={AppStyles.textSemibold}>Amount: {rupeeSym}{e?.totalPrice}</Text>
                             </View>
 
                         </View>

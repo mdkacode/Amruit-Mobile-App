@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import HomeScreen from '../screens/Home/Home.index';
+import AddProduct from '../screens/Home/Home.index';
 import LoginScreen from '../screens/Login/Login.index';
-import List from '../screens/List/List.index';
+import ProdcutList from '../screens/ProductList/ProductList.index';
 import Customer from '../screens/Customer/Customer.index';
 import AddCustomer from '../screens/Customer/NewCustomer.index';
 import Sales from '../screens/Sales/Sales.index';
@@ -15,6 +15,11 @@ const Screens = {
     isHeader: false,
     gestureEnabled: false,
   },
+  AddProduct:{
+    screen: AddProduct,
+    isHeader: true,
+    gestureEnabled: true, 
+  },
   Customer: {
     screen: Customer,
     isHeader: true,
@@ -26,20 +31,20 @@ const Screens = {
     gestureEnabled: true,
   },
   Home: {
-    screen: HomeScreen,
+    screen: Customer,
     isHeader: true,
     gestureEnabled: true,
   },
   Sales: {
     screen: Sales,
     isHeader: true,
-    gestureEnabled: true,
+    gestureEnabled: false,
   },
 
   List: {
-    screen: List,
+    screen: ProdcutList,
     isHeader: true,
-    gestureEnabled: true,
+    gestureEnabled: false,
   },
 
 };

@@ -42,7 +42,6 @@ export const customerApi = createApi({
     endpoints: (builder) => ({
         addCustomer: builder.mutation({
             query: (body: ICustomerInputParams) => {
-                console.log(body, "Body")
                 return ({
                 url: `order/addCustomer`,
                 method: 'POST',

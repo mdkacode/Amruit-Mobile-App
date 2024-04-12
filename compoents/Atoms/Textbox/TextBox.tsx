@@ -53,10 +53,7 @@ const TextBox: React.FC<TextBoxProps> = (props) => {
         }
     };
 
-    const memoizedValue = useMemo(() => {
-        // Perform some expensive computation here
-        return value.toUpperCase();
-    }, [value]);
+  
 
     return (
         <KeyboardAvoidingView  style={{ flexDirection: 'row', alignItems: 'center',margin:1,borderRadius:10 }}>
@@ -91,6 +88,7 @@ const TextBox: React.FC<TextBoxProps> = (props) => {
             <View style={{ flex: 7 }}>
                 <TextInput
                     testID='text-box'
+                   
                     key={key}
                     style={[styles.textBoxStyle, {
                         height: 40,

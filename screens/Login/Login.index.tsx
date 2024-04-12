@@ -9,7 +9,7 @@ import { disableLoading, enableLoading } from '../../Store/Slices/loading.slice'
 import { showAlert } from '../../Store/Slices/alertSlice';
 import { getData, storeData } from '../../utils/localStorage';
 import { NavigationAction, useNavigation } from '@react-navigation/native';
-import HomeScreen from '../Home/Home.index';
+import AddProduct from '../Home/Home.index';
 import { logoutUserGlobalFunction, validateUserGlobalFunction } from '../../utils/authUtils';
 import { clearUser, setUser } from '../../Store/Slices/user.slice';
 
@@ -52,8 +52,6 @@ const LoginScreen: React.FC<{ navigate: any, children: React.ReactNode }> = ({ c
         
         dispatch(enableLoading());
         validateUser({ phone: userName, userCode: password }).then(async (res:any) => {
-           
-            console.log(res?.data,"QWERTY");
             if (res.data?.phone) {
                 dispatch(showAlert({ message: 'Sucess', type: 'alert' }))
                 await storeData('loginInfo', res.data);
