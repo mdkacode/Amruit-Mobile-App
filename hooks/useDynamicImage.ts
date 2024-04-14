@@ -17,7 +17,7 @@ import percentage from '../assets/icons/percentage.png';
 import call from '../assets/icons/call.png';
 import calendar from '../assets/icons/calendar.png';
 import barcode from '../assets/icons/barcode.png';
-
+import packageIcon from '../assets/icons/package.png';
 
 
 
@@ -44,6 +44,7 @@ const Iimages: Images = {
     calendar: calendar,
     percentage: percentage,
     barcode: barcode,
+    package: packageIcon,
     wrench: require('../assets/icons/wrench.png'),
 };
 

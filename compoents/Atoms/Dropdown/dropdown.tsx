@@ -5,6 +5,7 @@ import TextBox from '../Textbox/TextBox';
 import { FlashList } from '@shopify/flash-list';
 import ImageDisplay from '../ImageDisplay/imageDisplay';
 import fontFamily from '../../../constants/fontFamily';
+import { ScrollView } from 'react-native-gesture-handler';
 
 interface SheetContentProps {
     options: dropdownOptions[];
@@ -142,10 +143,12 @@ const Dropdown: React.FC<SheetContentProps> = (props) => {
                             <TextBox onChange={(e) => setSearchText(e)} placeholder='Search' />
                         </View>
                     )}
+                    <ScrollView style={{marginBottom:100}}>
                     <FlashList
                         data={filterOptions(searchText)}
                         keyExtractor={(item) => item.value}
                         bouncesZoom={true}
+                        scrollEnabled={true}
                         estimatedItemSize={filterOptions(searchText).length > 0 ? filterOptions(searchText).length : 0}
                         renderItem={({ item }) => {
 
@@ -153,6 +156,7 @@ const Dropdown: React.FC<SheetContentProps> = (props) => {
                             
                         }}
                     />
+                    </ScrollView>
                 </BottomSheet>}
             </View>}
         </>
@@ -161,11 +165,18 @@ const Dropdown: React.FC<SheetContentProps> = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        zIndex: 999,
-        position: 'absolute',
+        zIndex: 9999,
+        position: 'relative',
         height: Dimensions.get('window').height,
-        width: Dimensions.get('window').width,
-        padding: 5
+        top:0,
+        marginTop:0,
+        padding: 5,
+        marginBottom: 10,
+        paddingRight:12,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+        left:0,
+       
     },
     handleContainer: {
         alignItems: 'center',

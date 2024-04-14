@@ -19,10 +19,10 @@ const Customer = ({ navigation, route }) => {
 
 
     const selector = useAppSelector(state => state.userSlice.user);
+    const userSelector = useAppSelector(user=> user.userSlice);
     const isFocused = useIsFocused();
-    const { data, isError, isFetching, isLoading, refetch } = useGetCustomerListQuery('9839284651');
+     const { data, isError, isFetching, isLoading, refetch } = useGetCustomerListQuery(userSelector.user.phone);
     const dispatch = useAppDispatch();
-
 
     const HeaderComponent = () => {
 
@@ -77,13 +77,13 @@ const Customer = ({ navigation, route }) => {
     );
 
     useEffect(() => {
-        if (isLoading) {
+        if (isLoading || isFetching) {
             dispatch(enableLoading());
         }
         if (!isLoading) {
             dispatch(disableLoading());
         }
-    }, [isLoading])
+    }, [isLoading , isFetching])
 
     const markStatus = (index: number, status: boolean) => {
         let defaultColor: 'green' | 'red' = !status ? 'red' : 'green';
@@ -105,20 +105,25 @@ const Customer = ({ navigation, route }) => {
     return (
         <ScrollView key="customerScrollView">
             {data && data.length == 0 && <View key="customerView" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: Dimensions.get('window').height - 100 }}>
-                <Text key="noCustumerText" style={[AppStyles.textSemibold, { fontSize: 16 }]}>No Customers Found</Text>
-                <Button key="logoutBtn" title="+ Add Product" fontColor='white' buttonColor='black' fontSize={14} onPress={() => navigation.push('AddCustomer')} />
+                <Text key="noCustumerText" style={[AppStyles.textSemibold, { fontSize: 16,marginBottom:10 }]}>No Customers Found</Text>
+                <Button key="logoutBtn" title="+ Add Customer" fontColor='white' buttonColor='black' fontSize={14} onPress={() => navigation.push('AddCustomer')} />
             </View>}
             {data?.length > 0 && data?.map((e, index) => {
-                const { customerNumber, car, serviceDate, serviceName, estimatedCost, isCompleted, productUsed, garageNumber, serviceType,totalPrice,createdAt } = e.order;
-                return <TouchableOpacity key={`${index}-touchableOpacity`} onPress={() => navigation.push('AddCustomer',e)} style={AppStyles.cardStyle}  >
+                const { customerNumber, car, serviceDate, serviceName, estimatedCost, isCompleted, productUsed, garageNumber, serviceType,totalPrice,createdAt,images=[] } = e.order;
+                return <TouchableOpacity key={`${index}-touchableOpacity`} onPress={() => navigation.push('AddCustomer',e)} style={[AppStyles.cardStyle,{padding:5}]}  >
                     {markStatus(index, isCompleted)}
                     <View key={`${index}-carDetails`} style={AppStyles.cardContent}>
 
                         <View key={`${index}-flex-View`} style={{ display: 'flex', flexDirection: "row", gap: 10 }}>
-                            <ImageDisplay key={`${index}-car-image`} rounded height={30} width={30} borderColor='#fff' source="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" />
+                            {/* <ImageDisplay key={`${index}-car-image`} rounded height={40} width={40} borderColor='#fff' source="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" /> */}
 
                             <View key={`${index}-carDetail-view`} style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                                <Text key={`${index}-${serviceName || ''}-carOwnerName-view`} style={AppStyles.textBold}>{serviceName}</Text>
+                                <Text key={`${index}-${serviceName || ''}-carOwnerName-view`} style={[AppStyles.textSemibold,{fontSize:20,textTransform:'uppercase',color:'black'}]}>{serviceName}</Text>
+                                <View style={{
+                                    width: '100%',
+                                    borderWidth:0.2,
+                                    borderColor: 'rgba(0,0,0,0.2)',
+                                }} ></View>
                                 <Text key={`${index}carName-view`} style={AppStyles.textLight}>{car?.label || ''} | {serviceType}</Text>
                                 <Text key={`${index}-PickupCarTime`} style={AppStyles.textLight}>Started - {moment(createdAt).format("DD-MM-YY")}</Text>
                                 <Text key={`${index}-PickupCarTimeDeliver`} style={AppStyles.textRegular}>Deliver-   {moment(serviceDate).format("DD-MM-YY")}</Text>
@@ -144,6 +149,4 @@ const Customer = ({ navigation, route }) => {
 
 
 
-export default memo(Customer, (prevProps, nextProps) => {
-    return prevProps === nextProps;
-});
+export default Customer

@@ -19,8 +19,9 @@ export interface ICustomerOutputParams {
     customerNumber: string;
     serviceName: string;
     serviceType: string;
+    carKilometer?:number;
     serviceDate: string | Date;
-    estimatedCost: string;
+    estimatedCost: string | number;
     isCompleted: boolean;
     productUsed: any[];
     garageNumber: string;
@@ -35,6 +36,19 @@ interface iProductUsedInterface {
     "productDiscount": number
 }
 
+export type filterType = 'today' | 'month' | 'year' | 'overall' | 'progress' | 'completed';
+interface iSaleReportInterface {
+    type:filterType;
+    garageNumber: string;
+}
+
+export interface iSalesReport {
+    totalOrders:number;
+    completedOrders:number;
+    ordersList:ICustomerOutputParams[];
+    pendingOrders:number;
+    totalRevenue:number;
+}
 
 export const customerApi = createApi({
     reducerPath: "customerApi",
@@ -79,7 +93,17 @@ export const customerApi = createApi({
                 return response;
             },
         }),
+        saleReport: builder.mutation({
+            query: (body: iSaleReportInterface) => ({
+                url: `order/orderStats`,
+                method: 'POST',
+                body,
+            }),
+            transformResponse: (response: iSalesReport) => {
+                return response;
+            },
+        }),
     })
 });
 
-export const { useAddCustomerMutation, useGetCustomerListQuery,useUpdateCustomerMutation } = customerApi;
+export const { useAddCustomerMutation, useGetCustomerListQuery,useUpdateCustomerMutation,useSaleReportMutation } = customerApi;

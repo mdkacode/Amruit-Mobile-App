@@ -8,6 +8,7 @@ import { userAuthApi } from '../Api/userAuth';
 import { carSearchApi } from '../Api/searchApi';
 import { customerApi } from '../Api/customerApi';
 import { productApi } from '../Api/productApi';
+import { garageApi } from '../Api/garageApi';
 const rootReducer = combineReducers({
     userSlice: userSlice,
     currentScreen: currentScreen,
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
     [userAuthApi.reducerPath]: userAuthApi.reducer,
     [carSearchApi.reducerPath]: carSearchApi.reducer,
     [customerApi.reducerPath]: customerApi.reducer,
-    [productApi.reducerPath]: productApi.reducer,  
+    [productApi.reducerPath]: productApi.reducer,
+    [garageApi.reducerPath]: garageApi.reducer,
 });
 
 export default rootReducer;

@@ -40,9 +40,7 @@ const BarcodeScannerWithInput = React.memo((props: IBarcodeScannerWithInputProps
   }, []);
 
   const checkCameraPermission = async () => {
-    // You may need to handle camera permissions using @react-native-permissions package
-    // For simplicity, we assume camera permissions are granted
-   
+    requestPermission();
     if (!hasPermission) requestPermission();
 
   };
@@ -64,7 +62,7 @@ const BarcodeScannerWithInput = React.memo((props: IBarcodeScannerWithInputProps
           codeScanner={codeScanner}
           focusable
           enableZoomGesture
-          zoom={2}
+          zoom={1}
         />}
         <View style={{ borderTopWidth: 1, borderColor: useColorFromPallate('lightGrey') }}>
 
@@ -80,9 +78,8 @@ const BarcodeScannerWithInput = React.memo((props: IBarcodeScannerWithInputProps
             {/* <ImageDisplay  source={'rupee'} /> */}
             <TextBox
               placeholder="Scan Barcode"
-              value={scanProduct}
+              value={scanProduct.toString()}
               icon='barcode'
-              clickLabel
               label='Scan'
               onChange={(e) => onScanValue(e)}
               onPressLabel={() => activateScaner()}

@@ -25,7 +25,22 @@ const AppStyles = StyleSheet.create({
         backgroundColor: '#fff',
         borderRadius: 8,
         fontFamily: fontFamily.regular.fontFamily,
-        padding: 16,
+      
+        margin: 8,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 4,
+        elevation: 4, // For Android
+    },
+    transparentCardStyle: {
+        backgroundColor: '#fff',
+        borderRadius: 8,
+        fontFamily: fontFamily.regular.fontFamily,
+        padding: 8,
         margin: 8,
         shadowColor: '#000',
         shadowOffset: {

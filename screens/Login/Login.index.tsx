@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, StyleSheet, Dimensions, Image, Text, TextInput } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, StyleSheet, Dimensions, Image, Text, TextInput, Alert } from 'react-native';
 import TextBox from '../../compoents/Atoms/Textbox/TextBox';
 import Button from '../../compoents/Atoms/Buttons/Button';
 import fontFamily from '../../constants/fontFamily';
@@ -24,12 +24,26 @@ const LoginScreen: React.FC<{ navigate: any, children: React.ReactNode }> = ({ c
         password: ''
     });
 
-    let [validateUser, { data, isLoading }] = useLoginMutation();
+    let [validateUser, { data, isLoading,isError,isSuccess,status,error }] = useLoginMutation();
 
-
+    useEffect(()=>{
+        if(isLoading){
+            dispatch(enableLoading())
+        }
+        if(!isLoading){
+            dispatch(disableLoading())
+        }
+        if(isError && typeof error?.data?.error === 'string'){
+            Alert.alert(`${error?.data?.error}`);
+            dispatch(showAlert({message:'Failed to login',type:'error'}))
+        }
+    },[data,isLoading,isError])
 
     const validateUserOnLoad = async () => {
         let loginInfo = await validateUserGlobalFunction();
+        console.log(loginInfo, 'loginInfo');
+        await validateUser({ phone: loginInfo?.phone, userCode: loginInfo?.userCode })
+        console.log(data, 'data');
         if (loginInfo) {
             dispatch(setUser({ user: { ...loginInfo }, isLoggedIn: true }));
             setLoginInfoState(loginInfo);
@@ -37,6 +51,7 @@ const LoginScreen: React.FC<{ navigate: any, children: React.ReactNode }> = ({ c
             navigate.navigate('Customer');
         } else {
             dispatch(clearUser());
+            logoutUserGlobalFunction();
             //@ts-ignore
             navigate.navigate('Login');
         }
@@ -76,6 +91,7 @@ const LoginScreen: React.FC<{ navigate: any, children: React.ReactNode }> = ({ c
                 onChange={(text) => setUserDetails({ ...userDetails, userName: text })}
                 placeholder='Enter Phone Number'
                 icon='smartphone'
+                keyboardType='phone-pad'
                 maxLength={10}
                 autoComplete='tel'
                 autoFocus={true}
@@ -86,6 +102,7 @@ const LoginScreen: React.FC<{ navigate: any, children: React.ReactNode }> = ({ c
                 maxLength={4}
                 label='4 digit Pin'
                 autoComplete='one-time-code'
+                keyboardType='phone-pad'
                 onChange={(text) => setUserDetails({ ...userDetails, password: text })}
                 fontSize={18}
                 icon='lock'

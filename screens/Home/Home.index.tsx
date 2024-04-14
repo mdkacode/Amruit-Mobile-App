@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, SafeAreaView, Keyboard } from 'react-native';
+import { StyleSheet, SafeAreaView, Keyboard, Dimensions, View } from 'react-native';
 import TextBox from '../../compoents/Atoms/Textbox/TextBox';
 import { ScrollView } from 'react-native-gesture-handler';
 import BarcodeScannerWithInput from '../../compoents/molecules/BarcodeScannerWithInput/BarcodeScannerWithInput';
@@ -10,11 +10,11 @@ import { useGetSearchCarQuery } from '../../Store/Api/searchApi';
 import { singleProductInterface, useAddProductMutation, useUpdateProductMutation } from '../../Store/Api/productApi';
 import moment from 'moment';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { useAppDispatch } from '../../Store/store.index';
+import { useAppDispatch, useAppSelector } from '../../Store/store.index';
 import { disableLoading, enableLoading } from '../../Store/Slices/loading.slice';
 
 const AddProduct: React.FC<{ children: React.ReactNode }> = () => {
-
+    const userSelector = useAppSelector(state=> state.userSlice.user.phone);
     const route = useRoute();
     const navigation = useNavigation();
     const dispatch = useAppDispatch();
@@ -32,7 +32,9 @@ const AddProduct: React.FC<{ children: React.ReactNode }> = () => {
 
     const [addProductApi, { isError, isLoading, isSuccess }] = useAddProductMutation();
     const [updateProductApi, { isError:updateProductIsError, isLoading:updateProductIsLoading, isSuccess:updateProductIsSuccess }] = useUpdateProductMutation();
-    const { data } = useGetSearchCarQuery('9839284651');
+    const { data } = useGetSearchCarQuery(userSelector);
+
+    console.log(data, 'data-carList')
     const onselect = (e: any) => {
         setAddProduct({ ...addProduct, car: e });
     }
@@ -42,7 +44,8 @@ const AddProduct: React.FC<{ children: React.ReactNode }> = () => {
 
     const saveProduct = () => {
         addProduct.expiryDate = moment(addProduct.expiryDate).format('YYYY-MM-DD');
-        addProduct.createdBy = '9839284651';
+        addProduct.createdBy = userSelector;
+        addProduct.garageContactNumber = userSelector;
         if(addProduct?.car?.id) addProduct.car = addProduct?.car?.id;
        
         if(route?.params) updateProductApi(addProduct);
@@ -74,7 +77,7 @@ const AddProduct: React.FC<{ children: React.ReactNode }> = () => {
 
 
     // const { data } = useGetSearchCarQuery('9839284651');
-    return <SafeAreaView style={styles.container}>
+    return <>
         <ScrollView scrollEventThrottle={16} style={styles.container} onScroll={() => Keyboard.dismiss()}>
             <TextBox icon='card'
                 value={addProduct?.productName}
@@ -111,27 +114,25 @@ const AddProduct: React.FC<{ children: React.ReactNode }> = () => {
                 value={addProduct?.gst?.toString()}
                 onChange={(e) => setAddProduct({ ...addProduct, gst: parseInt(e) })}
                 placeholder='GST' keyboardType='numeric' icon='percentage' />
-            <TextBox
-                value={addProduct?.garageContactNumber?.toString()}
-                onChange={(e) => setAddProduct({ ...addProduct, garageContactNumber: e })}
-                placeholder='Phone Number' autoComplete='tel' keyboardType='numeric' label='Vendor 📞' icon='call' />
-
-            <DatePicker mode='date'
+            {/* <DatePicker mode='date'
                 onChange={(e) => setAddProduct({ ...addProduct, expiryDate: e.toISOString() })}
                 value={new Date()}
-                label='Expiry' />
+                label='Expiry' /> */}
             <BarcodeScannerWithInput
 
                 onScanValue={onScanValue} />
 
             <Button title='Save' buttonColor={'black'} icon='barcode' fontColor='white' onPress={() => saveProduct()} />
         </ScrollView>
-    </SafeAreaView>;
+    </>;
 };
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        height: Dimensions.get('screen').height,
+       
+      
     },
 });
 

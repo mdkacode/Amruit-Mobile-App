@@ -6,7 +6,7 @@ import ImageDisplay from "../Atoms/ImageDisplay/imageDisplay"
 
 import { RootStackParamList } from "../../navigation/NavigationStack"
 
-import {  useNavigation } from "@react-navigation/native"
+import { useNavigation } from "@react-navigation/native"
 import { logoutUserGlobalFunction, validateUserGlobalFunction } from "../../utils/authUtils"
 import { useAppSelector } from "../../Store/store.index"
 
@@ -15,9 +15,10 @@ interface BottomTabsProps {
     showTabs?: boolean;
 }
 
-const BottomTabs:React.FC<BottomTabsProps> = (props) => {
+const BottomTabs: React.FC<BottomTabsProps> = (props) => {
 
-    let {showTabs} = props;
+    let { showTabs } = props;
+
     const appSelector = useAppSelector(state => state.userSlice.user);
     const navigation = useNavigation();
     const navigationToScreen = (screenName: keyof RootStackParamList) => {
@@ -25,14 +26,14 @@ const BottomTabs:React.FC<BottomTabsProps> = (props) => {
         navigation.navigate(screenName);
     }
     return showTabs && <View style={{
-        display:  "flex",
+        display: "flex",
         width: Dimensions.get('window').width,
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'space-evenly',
         paddingLeft: 20,
         paddingRight: 20,
         height: 80,
-        
+        backgroundColor: 'white',
         borderTopEndRadius: 20,
         borderTopStartRadius: 20,
         elevation: 10,
@@ -44,9 +45,12 @@ const BottomTabs:React.FC<BottomTabsProps> = (props) => {
             <ImageDisplay borderColor='white' source={images.graph} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigationToScreen('List')} style={AppStyles.bottomNavigation}>
+            <ImageDisplay borderColor='white' source={images.packageIcon} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigationToScreen('GarageDetails')} style={AppStyles.bottomNavigation}>
             <ImageDisplay borderColor='white' source={images.user} />
         </TouchableOpacity>
-    </View> 
+    </View>
 }
 
 export default BottomTabs;

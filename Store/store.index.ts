@@ -5,6 +5,7 @@ import { userAuthApi } from './Api/userAuth';
 import { carSearchApi } from './Api/searchApi';
 import { customerApi } from './Api/customerApi';
 import { productApi } from './Api/productApi';
+import { garageApi } from './Api/garageApi';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const persistConfig = {
@@ -20,7 +21,8 @@ const store = configureStore({
         carSearchApi.middleware,
         userAuthApi.middleware,
         customerApi.middleware,
-        productApi.middleware
+        productApi.middleware,
+        garageApi.middleware
     ),
 });
 

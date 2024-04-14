@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Text, View } from 'react-native';
-import DateTimePicker, { Event } from '@react-native-community/datetimepicker';
+import { Text, View, TouchableOpacity, Platform, Modal } from 'react-native';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import useColorFromPallate from '../../../hooks/useColorFromPallate';
 import fontFamily from '../../../constants/fontFamily';
 import ImageDisplay from '../ImageDisplay/imageDisplay';
+import moment from 'moment';
 
 interface DatePickerProps {
     mode: 'date' | 'time' | 'datetime';
-    onChange: ( selectedDate?: Date) => void;
+    onChange: (selectedDate?: Date) => void;
     value: Date;
     minimumDate?: Date;
     key?: string;
@@ -15,44 +16,81 @@ interface DatePickerProps {
 }
 
 const DatePicker: React.FC<DatePickerProps> = (props) => {
-
     const { mode = "date", minimumDate = new Date(), key = "dateTimeComponent", label = "Select Date", onChange = (e: any, selectedDate?: Date) => console.log(e), value = new Date() } = props;
+
+    const [showPicker, setShowPicker] = useState(false);
+
+    const showDatePicker = () => {
+        setShowPicker(true);
+    };
+
+    const hideDatePicker = () => {
+        setShowPicker(false);
+    };
+
+    const renderPicker = () => {
+        if (Platform.OS === 'ios') {
+            return (
+                <Modal
+                    visible={showPicker}
+                    transparent={true}
+                    animationType="slide"
+                    onRequestClose={hideDatePicker}
+                >
+                    <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+                        <View style={{ backgroundColor: 'white', padding: 20 }}>
+                            <DateTimePicker
+                                value={value}
+                                mode={mode}
+                                minimumDate={minimumDate}
+                                onChange={(event: any, selectedDate?: Date) => {
+                                    hideDatePicker();
+                                    onChange(selectedDate);
+                                }}
+                            />
+                            <TouchableOpacity onPress={hideDatePicker}>
+                                <Text style={{ alignSelf: 'flex-end', marginTop: 10 }}>Close</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </Modal>
+            );
+        } else {
+            return (
+                <DateTimePicker
+                    value={value}
+                    mode={mode}
+                    minimumDate={minimumDate}
+                    onChange={(event: any, selectedDate?: Date) => {
+                        hideDatePicker();
+                        onChange(selectedDate);
+                    }}
+                />
+            );
+        }
+    };
+
     return (
-        <View key={'dateTimeComponentView' + key} style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            padding: 10,
-            alignContent: 'center',
-            alignItems: 'center',
-            backgroundColor: useColorFromPallate('white')
-        }}>
-          
-           
-            <DateTimePicker
-                key={'dateTimeComponentPicker' + key}
-                testID="dateTimePicker"
-                value={value}
-                minimumDate={minimumDate}
-                mode={mode}
-                aria-label={label}
-                shouldRasterizeIOS={true}
-                
-                locale='en-IN'
-                accentColor={useColorFromPallate('black')}
-                style={{
-                shadowColor: useColorFromPallate('black'),
-                    backgroundColor: useColorFromPallate('white'),
-                 
-                }}
-                display="compact"
-                onChange={(event: any, selectedDate?: Date) => onChange(selectedDate)}
-            />
-             <Text key={'dateTimeComponentText' + key} style={{
-                fontFamily: fontFamily.regular.fontFamily,
-                fontSize: 16,
-                color: useColorFromPallate('textTertiary')
-            }}>{label}</Text>
-        </View>
+        <TouchableOpacity onPress={showDatePicker}>
+            <View key={'dateTimeComponentView' + key} style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                padding: 10,
+                alignContent: 'center',
+                alignItems: 'center',
+                backgroundColor: useColorFromPallate('white')
+            }}>
+                <Text style={[fontFamily.semibold, fontFamily.bold]}>
+                    {moment(value).format('DD-MM-YYYY')}
+                </Text>
+                <Text key={'dateTimeComponentText' + key} style={{
+                    fontFamily: fontFamily.regular.fontFamily,
+                    fontSize: 16,
+                    color: useColorFromPallate('textTertiary')
+                }}>{label}</Text>
+                {showPicker && renderPicker()}
+            </View>
+        </TouchableOpacity>
     );
 };
 

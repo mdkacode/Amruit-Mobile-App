@@ -7,6 +7,7 @@ import Customer from '../screens/Customer/Customer.index';
 import AddCustomer from '../screens/Customer/NewCustomer.index';
 import Sales from '../screens/Sales/Sales.index';
 import { useAppSelector } from '../Store/store.index';
+import GarageDetails from '../screens/GarageDetails/GarageDetails';
 ;
 // Define mapping object for screens
 const Screens = {
@@ -43,6 +44,11 @@ const Screens = {
 
   List: {
     screen: ProdcutList,
+    isHeader: true,
+    gestureEnabled: false,
+  },
+  GarageDetails: {
+    screen: GarageDetails,
     isHeader: true,
     gestureEnabled: false,
   },

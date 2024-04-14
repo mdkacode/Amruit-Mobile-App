@@ -9,24 +9,31 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     regular: {
         fontFamily: 'AirbnbCereal_W_Bk',
+        color: 'black',
     },
     semibold: {
         fontFamily: 'AirbnbCereal_W_Bd',
+        color: 'black',
     },
     bold: {
         fontFamily: 'AirbnbCereal_W_Blk',
+        color: 'black',
     },
     light: {
         fontFamily: 'AirbnbCereal_W_Lt',
+        color: 'black',
     },
     smallFont: {
         fontSize: 14,
+        color: 'black',
     },
     mediumFont: {
         fontSize: 16,
+        color: 'black',
     },
     largeFont: {
         fontSize: 18,
+        color: 'black',
     },
 
 });

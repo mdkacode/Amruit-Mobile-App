@@ -35,6 +35,7 @@ export const userAuthApi = createApi({
                 // Modify the response here
                 return response;
             },
+            
         // }),
         // verifyOtp: builder.mutation({
         //     query: (body) => ({

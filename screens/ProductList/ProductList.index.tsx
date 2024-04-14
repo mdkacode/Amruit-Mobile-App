@@ -7,7 +7,7 @@ import AppStyles from '../../genericStles/AppStyles';
 import useColorFromPallate from '../../hooks/useColorFromPallate';
 import { theme } from '../../Themes/theme';
 import { useGetProductListQuery } from '../../Store/Api/searchApi';
-import { useAppDispatch } from '../../Store/store.index';
+import { useAppDispatch, useAppSelector } from '../../Store/store.index';
 import { disableLoading, enableLoading } from '../../Store/Slices/loading.slice';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { logoutUserGlobalFunction } from '../../utils/authUtils';
@@ -20,9 +20,9 @@ import { useDeleteProductMutation } from '../../Store/Api/productApi';
 const ProductList = (({navigation}) => {
 
     const dispatch = useAppDispatch();
-   
+    const userSelector = useAppSelector(state=> state.userSlice.user.phone);
     const isScreenFocused = useIsFocused();
-    const {data,isLoading,isFetching,refetch} = useGetProductListQuery('9839284651');
+    const {data,isLoading,isFetching,refetch} = useGetProductListQuery(userSelector);
     const items = data;
     useEffect(()=>{
         if( isFetching) {
@@ -85,7 +85,7 @@ const ProductList = (({navigation}) => {
         }
     },[isScreenFocused])
     return (
-        <View style={{ flex: 1 }}>
+        <View style={[{ flex: 1 }]}>
             {data && data.length == 0 && <View key="customerView" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: Dimensions.get('window').height - 100 }}>
                 <Text key="noCustumerText" style={[AppStyles.textSemibold, { fontSize: 16 }]}>No Product Found</Text>
                 <Button key="logoutBtn" title="+ Add Product" fontColor='white' buttonColor='black' fontSize={14} onPress={() =>  navigation.push('AddProduct')}/>
@@ -94,11 +94,11 @@ const ProductList = (({navigation}) => {
                 keyExtractor={(item) => item.value}
                 renderItem={({ item }) => {
                     return (
-                        <View style={[{...styles.listSingleItem,backgroundColor:theme.colors.cardPrimaryBackground}]}>
+                        <View style={[AppStyles.cardStyle,{...styles.listSingleItem,backgroundColor:theme.colors.cardPrimaryBackground}]}>
                           
                             {/* <ImageDisplay source={item.image} /> */}
                             <View style={{ flex: 1, flexDirection: "column",gap:2,marginLeft:8 }}>
-                                <Text key={`${item?.car ? `(${item.car})` : ''}`} style={AppStyles.textSemibold}>{item.label} {`${item?.car ? `(${item.car})` : ''}`}</Text>
+                                <Text key={`${item?.label ? `(${item.car})` : ''}`} style={AppStyles.textSemibold}>{item.label} {`${item?.car ? `(${item.car})` : ''}`}</Text>
                                 <Text key={item?.qty ? `Q - ${item.qty}` : ''} style={AppStyles.textRegular}> {item.qty ? `Qty - ${item.qty}` : ''}</Text>
                                 
                                 <View style={{display:'flex', flexDirection:'row',flex:1}}>
@@ -110,7 +110,7 @@ const ProductList = (({navigation}) => {
                                 <Button title={"Update" }buttonColor={'black'} fontColor='white'
                                     onPress={() => navigation.push('AddProduct', item)} />
                                      {item.id ? <Button title="❌ " buttonColor={'white'} fontColor='white'
-                                    onPress={() => deleteProduct(parseInt(item.id))} /> :<></>}
+                                    onPress={() => deleteProduct(parseInt(item?.id))} /> :<></>}
                             </View>
                         </View>
                     )
